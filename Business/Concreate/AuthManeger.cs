@@ -34,6 +34,8 @@ namespace Business.Concreate
                 return "Kayıt Başarılı";
             return "Kayıt Başarısız";
 
+
+
         }
         [ValidationAspect(typeof(UserValidator))]
         [TransactionAspect]
