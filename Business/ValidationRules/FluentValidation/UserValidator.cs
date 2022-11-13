@@ -15,11 +15,10 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(p => p.UserName).NotEmpty().WithMessage("Kullanıcı Adı Boş Olmamalıdır");
 
+            RuleFor(p => p.Image).NotEmpty().WithMessage("Email Adresi Boş Olmamalıdır");
             RuleFor(p => p.EmailAdress).NotEmpty().WithMessage("Email Adresi Boş Olmamalıdır");
-            RuleFor(p => p.EmailAdress).EmailAddress().WithMessage("Geçerli Bir Email Giriniz");
 
 
-            RuleFor(p => p.ImageUrl).NotEmpty().WithMessage("Kullanıcı Resmi Boş Olmamalıdır");
 
             RuleFor(p => p.Password).NotEmpty().WithMessage("Şifre Boş Olmamalıdır");
 
