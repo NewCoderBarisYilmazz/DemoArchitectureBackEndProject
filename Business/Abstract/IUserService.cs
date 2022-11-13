@@ -1,4 +1,5 @@
-﻿using Entities.Concreate;
+﻿using Core.Result.Abstract;
+using Entities.Concreate;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        void Add(RegisterAuthDto authDto);
+        IResult Add(RegisterAuthDto authDto);
         List<User> GetAll();
     User  GetByEmail(string  email);
 

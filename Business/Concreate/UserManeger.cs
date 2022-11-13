@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Core.Aspect.Transaction;
+using Core.Business;
+using Core.Result.Abstract;
+using Core.Result.Concrete;
 using Core.Utilities.Hashing;
 using DataAccess.Abstract;
 using Entities.Concreate;
@@ -20,9 +23,15 @@ namespace Business.Concreate
         {
             _userDal = userDal;
         }
-        [TransactionAspect]
-        public void Add(RegisterAuthDto authDto)
+       
+        public IResult Add(RegisterAuthDto authDto)
         {
+            string fileName = authDto.Image.FileName;
+            var ext = fileName.Substring(fileName.LastIndexOf('.'));
+            var extensions = ext.ToLower();
+            var result=BusinessRules.IsValidBusiness(CheckIfFileExtensionsIsAllow(extensions));
+            if (!result.Success)
+                return new ErrorResult(result.Message);
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePassword(authDto.Password, out passwordHash,out passwordSalt);
             User user = new User();
@@ -32,8 +41,8 @@ namespace Business.Concreate
             user.ImageUrl = "";
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-
           _userDal.Add(user);
+            return new SuccesResult();
         }
 
         public List<User> GetAll()
@@ -45,6 +54,17 @@ namespace Business.Concreate
         {
             var result = _userDal.Get(p => p.EmailAdress == email);
             return result;
+        }
+        private IResult CheckIfFileExtensionsIsAllow(string extensions)
+        {
+            List<string> extensionsList = new List<string>()
+            {
+                ".png",".jpg",".jpeg",".gif"
+            };
+            if (!extensionsList.Contains(extensions))
+                return new ErrorResult("Lütfen .png,.jpg,.jpeg,.gif uzantılı bir veri seçiniz");
+            return new SuccesResult();
+
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Business.Concreate
 
         }
         [ValidationAspect(typeof(UserValidator))]
-        [TransactionAspect]
+      
         public IResult  Register(RegisterAuthDto registerDto)
         {
             
@@ -47,11 +47,9 @@ namespace Business.Concreate
             var busisnessValidationResult = BusinessRules.IsValidBusiness(CheckEmailExist(registerDto.EmailAdress), CheckIfImageSizeIsLessThanOneMb(1));
             if (busisnessValidationResult.Success)
             {
-                _userService.Add(registerDto);
-                //throw new Exception()
-                //{
-
-                //};
+              var result=  _userService.Add(registerDto);
+                if (!result.Success)
+                    return new ErrorResult(result.Message);
                 return new SuccesResult("Kayıt Başarılı");
             }
             return new ErrorResult(busisnessValidationResult.Message);
