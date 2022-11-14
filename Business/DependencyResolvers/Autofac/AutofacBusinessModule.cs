@@ -1,15 +1,13 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
-using Business.Abstract;
-using Business.Concreate;
+using Business.Repositories.AuthRepository;
+using Business.Repositories.OperationClaimRepository;
+using Business.Repositories.UserOperationClaimRepository;
+using Business.Repositories.UserRepository;
+using Business.Utilities;
 using Core.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFreamwork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -24,6 +22,8 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<EfUserDal>().As<IUserDal>();
             builder.RegisterType<UserManeger>().As<IUserService>();
             builder.RegisterType<EfUserOperationClaimDal>().As<IUserOperationClaimDal>();
+            builder.RegisterType<FileManeger>().As<IFileService>();
+
             builder.RegisterType<UserOperationClaimManeger>().As<IUserOperationClaimService>();
             builder.RegisterType<AuthManeger>().As<IAuthService>();
             var assembly=System.Reflection.Assembly.GetExecutingAssembly();

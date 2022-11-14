@@ -1,7 +1,4 @@
-﻿using Business.Abstract;
-using Entities.Concreate;
-using Entities.Dtos;
-using Microsoft.AspNetCore.Http;
+﻿using Business.Repositories.UserRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WepApi.Controllers

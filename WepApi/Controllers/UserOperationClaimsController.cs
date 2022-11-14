@@ -1,5 +1,4 @@
-﻿using Business.Abstract;
-using DataAccess.Abstract;
+﻿using Business.Repositories.UserOperationClaimRepository;
 using Entities.Concreate;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,8 +1,7 @@
-﻿using Business.Abstract;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
 using Entities.Concreate;
 
-namespace Business.Concreate
+namespace Business.Repositories.UserOperationClaimRepository
 {
     public class UserOperationClaimManeger : IUserOperationClaimService
     {
@@ -15,7 +14,7 @@ namespace Business.Concreate
 
         public void Add(UserOperationClaim userOperationClaim)
         {
-           _userOperationClaimDal.Add(userOperationClaim);
+            _userOperationClaimDal.Add(userOperationClaim);
         }
     }
 }

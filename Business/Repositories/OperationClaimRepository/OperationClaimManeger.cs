@@ -1,5 +1,4 @@
-﻿using Business.Abstract;
-using DataAccess.Abstract;
+﻿using DataAccess.Abstract;
 using Entities.Concreate;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Concreate
+namespace Business.Repositories.OperationClaimRepository
 {
     public class OperationClaimManeger : IOperationClaimService
     {
@@ -20,7 +19,7 @@ namespace Business.Concreate
 
         public void Add(OperationClaim claim)
         {
-          _operationClaimDal.Add(claim);
+            _operationClaimDal.Add(claim);
         }
 
         public OperationClaim Get(OperationClaim claim)

@@ -1,6 +1,5 @@
-﻿using Business.Abstract;
+﻿using Business.Repositories.AuthRepository;
 using Entities.Dtos;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WepApi.Controllers

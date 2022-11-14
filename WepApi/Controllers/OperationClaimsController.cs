@@ -1,6 +1,5 @@
-﻿using Business.Abstract;
+﻿using Business.Repositories.OperationClaimRepository;
 using Entities.Concreate;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WepApi.Controllers
